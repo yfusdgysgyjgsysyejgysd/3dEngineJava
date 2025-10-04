@@ -17,9 +17,9 @@ public class Game
             System.out.println("y u release up me sad :(");
 
         if(Input.getMouseDown(1))
-            System.out.println("u press rmb ! ! !");
+            System.out.println("u press rmb ! ! ! at " + Input.getMousePosition().toString());
         if(Input.getMouseUp(1))
-            System.out.println("y u release rmb me sad :(");
+            System.out.println("y u release rmb me sad :( at " + Input.getMousePosition().toString());
     }
 
     public void update()
