@@ -1,6 +1,7 @@
 package com.base.engine;
 
 import org.lwjgl.LWJGLException;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 
@@ -13,6 +14,7 @@ public class Window
         {
             Display.setDisplayMode(new DisplayMode(width, height));
             Display.create();
+            Keyboard.create();
         }
         catch (LWJGLException e)
         {

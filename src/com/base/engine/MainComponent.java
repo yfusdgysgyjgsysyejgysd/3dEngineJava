@@ -64,6 +64,9 @@ public class MainComponent
                 if(Window.isCloseRequested())
                     stop();
 
+                Time.setDelta(frameTime);
+                Input.update();
+
                 game.input();
                 game.update();
 
