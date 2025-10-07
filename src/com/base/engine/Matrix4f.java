@@ -23,7 +23,7 @@ public class Matrix4f
     {
         Matrix4f res = new Matrix4f();
 
-        for(int i = 0; 1 < 4; i++)
+        for(int i = 0; i < 4; i++)
         {
             for(int j = 0; j < 4; j++)
             {
