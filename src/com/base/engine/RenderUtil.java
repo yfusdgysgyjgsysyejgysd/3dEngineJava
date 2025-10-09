@@ -12,7 +12,7 @@ public class RenderUtil
 
     public static void initGraphics()
     {
-        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+        glClearColor(0.0185f, 0.0367f, 0.0382f, 0f);
 
         glFrontFace(GL_CW);
         glCullFace(GL_BACK);
