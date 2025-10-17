@@ -5,7 +5,7 @@ import java.io.FileReader;
 
 public class ResourceLoader
 {
-    public static String loadShaders(String filename)
+    public static String loadShader(String filename)
     {
         StringBuilder shaderSource = new StringBuilder();
         BufferedReader shaderReader = null;
