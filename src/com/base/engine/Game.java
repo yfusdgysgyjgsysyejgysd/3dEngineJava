@@ -21,6 +21,8 @@ public class Game
         shader.addVertexShader(ResourceLoader.loadShader("basicVertex.vert"));
         shader.addFragmentShader(ResourceLoader.loadShader("basicFragment.frag"));
         shader.compileShader();
+
+        shader.addUniform("uniformFloat");
     }
 
     public void input()
@@ -36,9 +38,13 @@ public class Game
             System.out.println("y u release rmb me sad :( at " + Input.getMousePosition().toString());
     }
 
+    float temp = 0.0f;
+
     public void update()
     {
+        temp += Time.getDelta();
 
+        shader.setUniformf("uniformFloat", (float)Math.sin(temp));
     }
 
     public void render()

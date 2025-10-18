@@ -1,15 +1,19 @@
 package com.base.engine;
 
+import java.util.HashMap;
+
 import static org.lwjgl.opengl.GL20.*;
 import static org.lwjgl.opengl.GL32.*;
 
 public class Shader
 {
     private int program;
+    private HashMap<String, Integer> uniforms;
 
     public Shader()
     {
         program = glCreateProgram();
+        uniforms = new HashMap<String, Integer>();
 
         if(program == 0)
         {
@@ -21,6 +25,20 @@ public class Shader
     public void bind()
     {
         glUseProgram(program);
+    }
+
+    public void addUniform(String uniform)
+    {
+        int uniformLocation = glGetUniformLocation(program, uniform);
+
+        if (uniformLocation == 0xFFFFFFFF)
+        {
+            System.err.println("error: could not find uniform" + uniform);
+            new Exception().printStackTrace();
+            System.exit(1);
+        }
+
+        uniforms.put(uniform, uniformLocation);
     }
 
     public void addVertexShader(String text)
@@ -77,5 +95,25 @@ public class Shader
         }
 
         glAttachShader(program, shader);
+    }
+
+    public void setUniformi(String uniformName, int value)
+    {
+        glUniform1i(uniforms.get(uniformName), value);
+    }
+
+    public void setUniformf(String uniformName, float value)
+    {
+        glUniform1f(uniforms.get(uniformName), value);
+    }
+
+    public void setUniform(String uniformName, Vector3f value)
+    {
+        glUniform3f(uniforms.get(uniformName), value.getX(), value.getY(), value.getZ());
+    }
+
+    public void setUniform(String uniformName, Matrix4f value)
+    {
+        glUniformMatrix4(uniforms.get(uniformName), true, Util.createFlippedBuffer(value));
     }
 }
